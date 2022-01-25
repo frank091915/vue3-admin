@@ -1,5 +1,5 @@
 <template>
-  <img src="./assets/logo.png">
+  <img src="./assets/logo.png" />
   <div>
     <p>
       If Element Plus is successfully added to this project, you'll see an
@@ -7,15 +7,16 @@
       below
     </p>
     <el-button type="primary">el-button</el-button>
+    changes from windows
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     HelloWorld
   }
