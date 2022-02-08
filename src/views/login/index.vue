@@ -1,40 +1,103 @@
 <template>
   <div class="login-container">
-    <div class="logform">
-      <div class="loginTitle">
-        <h3>用户登录</h3>
+    <el-form class="login-form" ref="form">
+      <div class="title-container">
+        <h3 class="title">用户登录</h3>
       </div>
-      <el-form ref="form">
-        <span class="svgContainer">
+
+      <el-form-item>
+        <span class="svg-container">
           <el-icon>
             <Avatar />
           </el-icon>
         </span>
-        <el-form-item>
-          <el-input placeholder="账号" type="text"></el-input>
-        </el-form-item>
-      </el-form>
-      <el-form ref="form">
-        <span class="passwordContainer">
+        <el-input placeholder="账号" type="text"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <span class="svg-container">
           <el-icon>
             <Avatar />
           </el-icon>
         </span>
-        <el-form-item>
-          <el-input placeholder="密码" type="password"></el-input>
-        </el-form-item>
-        <span class="passwordIcon">
+        <el-input placeholder="密码" type="password"></el-input>
+        <span class="show-password">
           <el-icon>
             <Avatar />
           </el-icon>
         </span>
-      </el-form>
-      <el-button type="primary">登录</el-button>
-    </div>
+      </el-form-item>
+      <el-button type="primary" style="width: 100%">登录</el-button>
+    </el-form>
   </div>
 </template>
 <script setup>
 import { Avatar } from '@element-plus/icons'
 // element-plus中，使用icom组件，可以直接在setup标签中引入后使用
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+$bg: #2d3a4b;
+$dark_grey: #889aa4;
+$light_grey: #eee;
+$cursor: #fff;
+.login-container {
+  min-height: 100%;
+  width: 100%;
+  background-color: $bg;
+  overflow: hidden;
+  .login-form {
+    position: relative;
+    width: 520px;
+    padding: 160px 35px 0;
+    margin: 0 auto;
+    overflow: hidden;
+    // ::v-deep 深度选择器，可以指定子组件内的样式
+    ::v-deep .el-form-item {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      color: #454545;
+    }
+    ::v-deep .el-input {
+      display: inline-block;
+      width: 85%;
+      height: 47px;
+      input {
+        background-color: transparent;
+        border: none;
+        border-radius: 0px;
+        padding: 12px 5px 12px 15px;
+        color: $light_grey;
+        caret-color: $cursor;
+      }
+    }
+
+    .svg-container {
+      padding: 6px 5px 6px 15px;
+      color: $dark_grey;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .title-container {
+      position: relative;
+      .title {
+        font-size: 26px;
+        color: $light_grey;
+        margin: 0 auto 40px auto;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+
+    .show-password {
+      position: absolute;
+      right: 10px;
+      top: 7px;
+      font-size: 16px;
+      color: $dark_grey;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}
+</style>
