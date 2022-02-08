@@ -8,7 +8,7 @@
       class="svg-external-icon svg-icon"
     ></div>
     <svg v-else :class="className" class="svg-icon" aria-hidden="true">
-      <use :xlink:href="iconName"></use>
+      <use :xlink:href="iconName" />
     </svg>
     <!-- 展示内部图标 -->
   </div>

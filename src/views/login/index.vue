@@ -1,33 +1,71 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="form">
+    <el-form class="login-form" ref="form" :model="loginForm" :rules="rules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
-      <el-form-item>
+      <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon="user"></svg-icon>
         </span>
-        <el-input placeholder="账号" type="text"></el-input>
+        <el-input
+          placeholder="账号"
+          type="text"
+          v-model="loginForm.username"
+        ></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon="password"></svg-icon>
         </span>
-        <el-input placeholder="密码" type="password"></el-input>
-        <span class="show-password">
-          <el-icon>
-            <Avatar />
-          </el-icon>
+        <el-input
+          placeholder="密码"
+          :type="inputType"
+          v-model="loginForm.password"
+        ></el-input>
+        <span class="show-password" @click="handlePasswordToggle">
+          <svg-icon :icon="pwdIcon"></svg-icon>
         </span>
       </el-form-item>
-      <el-button type="primary" style="width: 100%">登录</el-button>
+      <el-button type="primary" style="width: 100%" @click="handleClick"
+        >登录</el-button
+      >
     </el-form>
   </div>
 </template>
 <script setup>
-import { Avatar } from '@element-plus/icons'
 // element-plus中，使用icom组件，可以直接在setup标签中引入后使用
+import { validatePass } from '@/utils/rules'
+import { computed, ref } from 'vue'
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: '请输入用户名',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      trigger: 'blur',
+      validator: validatePass
+    }
+  ]
+})
+const isPasswordType = ref(true)
+const inputType = computed(() => (isPasswordType.value ? 'password' : 'input'))
+const pwdIcon = computed(() => (isPasswordType.value ? 'eye' : 'eye-open'))
+
+function handleClick() {
+  console.log(loginForm.value)
+}
+function handlePasswordToggle() {
+  isPasswordType.value = !isPasswordType.value
+}
 </script>
 <style lang="scss" scoped>
 $bg: #2d3a4b;
