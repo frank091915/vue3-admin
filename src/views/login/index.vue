@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="form" :model="loginForm" :rules="rules">
+    <el-form
+      class="login-form"
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="rules"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -27,7 +32,11 @@
           <svg-icon :icon="pwdIcon"></svg-icon>
         </span>
       </el-form-item>
-      <el-button type="primary" style="width: 100%" @click="handleClick"
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width: 100%"
+        @click="handleClick"
         >登录</el-button
       >
     </el-form>
@@ -37,10 +46,13 @@
 // element-plus中，使用icom组件，可以直接在setup标签中引入后使用
 import { validatePass } from '@/utils/rules'
 import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
+// 表单数据源
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
 })
+// 检验规则
 const rules = ref({
   username: [
     {
@@ -56,12 +68,33 @@ const rules = ref({
     }
   ]
 })
+
 const isPasswordType = ref(true)
 const inputType = computed(() => (isPasswordType.value ? 'password' : 'input'))
 const pwdIcon = computed(() => (isPasswordType.value ? 'eye' : 'eye-open'))
+const loading = ref(false)
 
+// 获取ref
+const loginFormRef = ref(null)
+
+// 获取store
+const store = useStore()
 function handleClick() {
-  console.log(loginForm.value)
+  loginFormRef.value.validate((valid) => {
+    if (valid) {
+      loading.value = true
+      // 触发user模块下的login action
+      store
+        .dispatch('user/login', loginForm.value)
+        .then((res) => {
+          loading.value = false
+        })
+        .catch((error) => {
+          console.log(error)
+          loading.value = false
+        })
+    }
+  })
 }
 function handlePasswordToggle() {
   isPasswordType.value = !isPasswordType.value
