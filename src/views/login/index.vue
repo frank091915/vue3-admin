@@ -4,21 +4,15 @@
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
-
       <el-form-item>
         <span class="svg-container">
-          <!-- <el-icon>
-            <Avatar />
-          </el-icon> -->
-          <SvgIcon icon="https:res.lgdsunday.club/user.svg"></SvgIcon>
+          <svg-icon icon="user"></svg-icon>
         </span>
         <el-input placeholder="账号" type="text"></el-input>
       </el-form-item>
       <el-form-item>
         <span class="svg-container">
-          <el-icon>
-            <Avatar />
-          </el-icon>
+          <svg-icon icon="password"></svg-icon>
         </span>
         <el-input placeholder="密码" type="password"></el-input>
         <span class="show-password">
@@ -33,7 +27,6 @@
 </template>
 <script setup>
 import { Avatar } from '@element-plus/icons'
-import SvgIcon from '@/components/svgIcon'
 // element-plus中，使用icom组件，可以直接在setup标签中引入后使用
 </script>
 <style lang="scss" scoped>
