@@ -7,9 +7,10 @@
 
       <el-form-item>
         <span class="svg-container">
-          <el-icon>
+          <!-- <el-icon>
             <Avatar />
-          </el-icon>
+          </el-icon> -->
+          <SvgIcon icon="https:res.lgdsunday.club/user.svg"></SvgIcon>
         </span>
         <el-input placeholder="账号" type="text"></el-input>
       </el-form-item>
@@ -32,6 +33,7 @@
 </template>
 <script setup>
 import { Avatar } from '@element-plus/icons'
+import SvgIcon from '@/components/svgIcon'
 // element-plus中，使用icom组件，可以直接在setup标签中引入后使用
 </script>
 <style lang="scss" scoped>
