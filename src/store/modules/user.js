@@ -7,7 +7,6 @@ export default {
   mutations: {},
   actions: {
     login(context, userInfo) {
-      console.log(userInfo)
       return new Promise((resolve, reject) => {
         const { username, password } = userInfo
         login({
