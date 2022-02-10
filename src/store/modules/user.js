@@ -2,6 +2,7 @@ import md5 from 'md5'
 import { login } from '@/api/sys'
 import { setItem, getItem } from '@/utils/storage'
 import { TOKEN } from '@/constant/index'
+import router from '@/router'
 
 export default {
   namespaced: true, // 表示这是一个单独的模块,
@@ -24,8 +25,9 @@ export default {
         })
           .then((res) => {
             console.log(res)
-            context.commit('setToken', res.data.token)
-            this.commit('user/setToken', res.data.token)
+            // context.commit('setToken', res.data.token)
+            this.commit('user/setToken', res.token)
+            router.push('/')
             resolve(res)
           })
           .catch((error) => {
