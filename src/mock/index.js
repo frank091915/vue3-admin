@@ -26,3 +26,18 @@ Mock.mock('/api/sys/login', 'post', (req) => {
     token: 123456789
   }
 })
+
+Mock.mock('/api/sys/profile', 'post', (req) => {
+  return {
+    avator: '',
+    permissions: {
+      menus: ['dashboard', 'userManage']
+    },
+    roles: [
+      {
+        id: 1,
+        title: '管理员'
+      }
+    ]
+  }
+})

@@ -11,3 +11,10 @@ export const login = (data) => {
     data
   })
 }
+
+export const profile = () => {
+  return service({
+    url: '/sys/profile',
+    method: 'POST'
+  })
+}

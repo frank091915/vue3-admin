@@ -1,10 +1,24 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import store from '@/store'
 
 export const service = axios.create({
   timeout: 10000,
   baseURL: process.env.VUE_APP_BASE_API
 })
+
+service.interceptors.request.use(
+  (config) => {
+    const token = store.getters.token
+    if (token) {
+      config.headers.authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 service.interceptors.response.use(
   (res) => {
