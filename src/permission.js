@@ -2,7 +2,7 @@ import router from '@/router'
 // import { getItem } from '@/utils/storage' 不用从本地获取，直接从vuex中拿
 import store from '@/store'
 
-const whiteList = ['/login', '/404', '401']
+const whiteList = ['/login', '/404', '/401']
 router.beforeEach(async (to, from, next) => {
   /**
    * 如果用户没有登录，跳转到login页面

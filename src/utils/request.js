@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
+import { isTokenValid } from '@/utils/chekoutToken'
 
 export const service = axios.create({
   timeout: 10000,
@@ -12,6 +13,11 @@ service.interceptors.request.use(
     const token = store.getters.token
     if (token) {
       config.headers.authorization = `Bearer ${token}`
+      const tokenValid = isTokenValid()
+      // 前端主动介入用户token失效退出
+      if (!tokenValid) {
+        store.dispatch('user/logout')
+      }
     }
     return config
   },
@@ -32,6 +38,10 @@ service.interceptors.response.use(
   },
   (error) => {
     ElMessage.error(error.message)
+    const { code } = error
+    if (code === 401) {
+      store.dispatch('user/logout')
+    }
     return Promise.reject(error)
   }
 )

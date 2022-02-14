@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <SideBarMenu></SideBarMenu>
-  </div>
+  <div>user-manage</div>
 </template>
 
 <script setup>
 import {} from 'vue'
-import SideBarMenu from './sideBarMenu.vue'
 </script>
 
 <style lang="scss" scoped></style>

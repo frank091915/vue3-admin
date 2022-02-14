@@ -1,14 +1,16 @@
 import md5 from 'md5'
 import { login, profile } from '@/api/sys'
-import { setItem, getItem } from '@/utils/storage'
+import { setItem, getItem, removeAllData } from '@/utils/storage'
 import { TOKEN, USERINFO } from '@/constant/index'
+import { setLoginTimeStampe } from '@/utils/chekoutToken'
 import router from '@/router'
 
 export default {
   namespaced: true, // 表示这是一个单独的模块,
   state: () => ({
     token: getItem(TOKEN),
-    userInfo: {}
+    userInfo: {},
+    tokenValidTime: 2 * 3600 * 1000
   }),
   mutations: {
     setToken(state, val) {
@@ -32,6 +34,7 @@ export default {
             console.log(res)
             // context.commit('setToken', res.data.token)
             this.commit('user/setToken', res.token)
+            setLoginTimeStampe()
             router.push('/')
             resolve(res)
           })
@@ -49,6 +52,13 @@ export default {
       } catch (error) {
         return Promise.reject(error)
       }
+    },
+    logout() {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllData()
+      // todo: 权限配置删除
+      router.push('/login')
     }
   }
 }
