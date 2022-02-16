@@ -25,6 +25,11 @@
 
 <script setup>
 import {} from 'vue'
+import { useRouter } from 'vue-router'
+import { filterRoutes, generateMenu } from '@/utils/route'
+const router = useRouter()
+const filteredRoutes = filterRoutes(router.getRoutes())
+console.log(generateMenu(filteredRoutes))
 </script>
 
 <style lang="scss" scoped></style>
