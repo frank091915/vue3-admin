@@ -6,18 +6,11 @@
 
     <el-scrollbar>
       <el-menu :unique-opened="true">
-        <el-submenu index="1">
-          <template #title>
-            <i class="el-icon-location"></i>
-            <span>Navigator One</span>
-          </template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-location"></i>
-          <span>Navigator Two</span>
-        </el-menu-item>
+        <SidebarItem
+          :route="route"
+          v-for="route in menuData"
+          :key="route.path"
+        ></SidebarItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -27,9 +20,10 @@
 import {} from 'vue'
 import { useRouter } from 'vue-router'
 import { filterRoutes, generateMenu } from '@/utils/route'
+import SidebarItem from './sideBarItem'
 const router = useRouter()
 const filteredRoutes = filterRoutes(router.getRoutes())
-console.log(generateMenu(filteredRoutes))
+const menuData = generateMenu(filteredRoutes)
 </script>
 
 <style lang="scss" scoped></style>
