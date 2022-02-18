@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <!-- 展示外部图标 -->
-    <div
-      v-if="isExternal"
-      :class="className"
-      :style="externalIconStyles"
-      class="svg-external-icon svg-icon"
-    ></div>
-    <svg v-else :class="className" class="svg-icon" aria-hidden="true">
-      <use :xlink:href="iconName" />
-    </svg>
-    <!-- 展示内部图标 -->
-  </div>
+  <!-- 展示外部图标 -->
+  <div
+    v-if="isExternal"
+    :class="className"
+    :style="externalIconStyles"
+    class="svg-external-icon svg-icon"
+  ></div>
+  <svg v-else :class="className" class="svg-icon" aria-hidden="true">
+    <use :xlink:href="iconName" />
+  </svg>
+  <!-- 展示内部图标 -->
 </template>
 
 <script setup>

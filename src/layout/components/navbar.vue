@@ -1,5 +1,8 @@
 <template>
   <div class="navbar">
+    <div class="hamburger-container">
+      <Hamburger />
+    </div>
     <div class="right-menu">
       <el-dropdown
         class="avator-container"
@@ -31,8 +34,9 @@
 <script setup>
 import {} from 'vue'
 import { useStore } from 'vuex'
+import Hamburger from '@/components/hamburger/index'
 const localAvator =
-  'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+  'http://img2.sycdn.imooc.com/61110c2b0001152907400741-160-160.jpg'
 const store = useStore()
 function handleCommand(type) {
   if (type === 'logout') {

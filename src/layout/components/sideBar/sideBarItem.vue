@@ -1,12 +1,10 @@
 <template>
   <el-menu-item :index="route.path" v-if="route.children.length === 0">
-    <i class="el-icon-location"></i>
-    <span>{{ route.meta.title }}</span>
+    <MenuItem :title="route.meta.title" :icon="route.meta.icon"></MenuItem>
   </el-menu-item>
   <el-submenu v-else :index="route.path">
     <template #title>
-      <i class="el-icon-location"></i>
-      <span>{{ route.meta.title }}</span>
+      <MenuItem :title="route.meta.title" :icon="route.meta.icon"></MenuItem>
     </template>
     <sideBarItem
       :route="child"
@@ -18,6 +16,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
+import MenuItem from './menuItem'
 defineProps({
   route: {
     type: Object,
