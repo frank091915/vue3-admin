@@ -7,6 +7,7 @@ const getters = {
   userInfo: (state) => state.user.userInfo,
   tokenValidTime: (state) => state.user.tokenValidTime,
   cssVariables: () => cssVariables,
-  sideBarOpened: (state) => state.app.sideBarOpened
+  sideBarOpened: (state) => state.app.sideBarOpened,
+  tagViewsList: (state) => state.app.tagViews
 }
 export default getters

@@ -3,6 +3,9 @@
     <div class="hamburger-container">
       <Hamburger />
     </div>
+    <div class="breadcrumb-container">
+      <Breadcrumb></Breadcrumb>
+    </div>
     <div class="right-menu">
       <el-dropdown
         class="avator-container"
@@ -35,6 +38,10 @@
 import {} from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from '@/components/hamburger/index'
+import Breadcrumb from '@/components/breadcrumb/index'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+console.log(route, 'route')
 const localAvator =
   'http://img2.sycdn.imooc.com/61110c2b0001152907400741-160-160.jpg'
 const store = useStore()

@@ -3,7 +3,37 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import { isTag } from '@/utils/isTags'
+const route = useRoute()
+const store = useStore()
+// 监听route变化
+watch(
+  route,
+  (to, from) => {
+    const {
+      fullPath,
+      meta,
+      path,
+      params,
+      query,
+      meta: { title }
+    } = to
+    if (isTag(to)) {
+      store.commit('app/setTagViews', {
+        fullPath,
+        meta,
+        path,
+        params,
+        query,
+        title
+      })
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <style lang="scss" scoped>
