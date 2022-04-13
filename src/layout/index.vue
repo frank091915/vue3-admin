@@ -3,7 +3,7 @@
     class="app-wrapper"
     :class="[$store.getters.sideBarOpened ? 'openSideBar' : 'hideSidebar']"
   >
-    <!-- 侧边栏 -->
+    <!-- 侧边栏 left-->
     <div class="sidebar-container" :style="{ background: variables.menuBg }">
       <SideBar></SideBar>
     </div>
