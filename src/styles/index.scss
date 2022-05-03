@@ -3,6 +3,7 @@
 @import './mixins.scss';
 @import './sidebar.scss';
 @import './transition.scss';
+@import './form.scss';
 html,
 body {
   height: 100%;
@@ -53,4 +54,16 @@ div:focus {
     clear: both;
     height: 0;
   }
+}
+.paddingWrapper{
+  padding: 10px;
+}
+.sectionTitle{
+  margin: 10px 0;
+}
+
+.sep-line {
+  border-top: solid 1px #e0e0e0;
+  height: 0;
+  margin-bottom: 5px;
 }
