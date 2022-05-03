@@ -1,5 +1,5 @@
 <template>
-  <div class="">401</div>
+  <div>合同信息</div>
 </template>
 
 <script setup>

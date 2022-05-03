@@ -1,11 +1,5 @@
 <template>
   <div class="navbar">
-    <div class="hamburger-container">
-      <Hamburger />
-    </div>
-    <div class="breadcrumb-container">
-      <Breadcrumb></Breadcrumb>
-    </div>
     <div class="right-menu">
       <el-dropdown
         class="avator-container"
@@ -37,8 +31,6 @@
 <script setup>
 import {} from 'vue'
 import { useStore } from 'vuex'
-import Hamburger from '@/components/hamburger/index'
-import Breadcrumb from '@/components/breadcrumb/index'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 console.log(route, 'route')

@@ -4,11 +4,8 @@ import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
 import './styles/index.scss'
-import installIcons from '@/icon/index.js'
-import '@/mock/index.js'
-import './permission'
+// import './permission'
 
 const app = createApp(App)
 installElementPlus(app)
-installIcons(app) // 导入的函数与element-plus一样，将app传入，进行全局组件注册
 app.use(store).use(router).mount('#app')

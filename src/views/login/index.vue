@@ -10,9 +10,6 @@
         <h3 class="title">用户登录</h3>
       </div>
       <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon="user"></svg-icon>
-        </span>
         <el-input
           placeholder="账号"
           type="text"
@@ -20,17 +17,11 @@
         ></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon="password"></svg-icon>
-        </span>
         <el-input
           placeholder="密码"
           :type="inputType"
           v-model="loginForm.password"
         ></el-input>
-        <span class="show-password" @click="handlePasswordToggle">
-          <svg-icon :icon="pwdIcon"></svg-icon>
-        </span>
       </el-form-item>
       <el-button
         :loading="loading"
@@ -71,7 +62,6 @@ const rules = ref({
 
 const isPasswordType = ref(true)
 const inputType = computed(() => (isPasswordType.value ? 'password' : 'input'))
-const pwdIcon = computed(() => (isPasswordType.value ? 'eye' : 'eye-open'))
 const loading = ref(false)
 
 // 获取ref
@@ -95,9 +85,6 @@ function handleClick() {
         })
     }
   })
-}
-function handlePasswordToggle() {
-  isPasswordType.value = !isPasswordType.value
 }
 </script>
 <style lang="scss" scoped>
